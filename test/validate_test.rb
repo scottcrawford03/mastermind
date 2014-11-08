@@ -6,7 +6,7 @@ require 'validate'
 class ValidateTest < Minitest::Test
 
   def test_that_it_checks_guess_against_answer
-    assert true, answer array == guess array
+    assert secret_answer == guess
   end
 
   def test_that_it_says_how_many_colors_are_right

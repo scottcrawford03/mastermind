@@ -18,7 +18,7 @@ class GamePrompts
 
   def welcome_options
     letter = gets
-    case letter
+    case
     when "p" || "P"
       puts play
     when "i" || "I"
