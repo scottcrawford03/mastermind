@@ -6,11 +6,11 @@
 class GamePrompts
 
   def intro_message
-    "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"  # => "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
   def welcome(letter)
-    case letter                                                                             # => "I"
+    case letter
     when "p" || "P"
       play
     when "i" || "I"
@@ -18,8 +18,8 @@ class GamePrompts
     when "q" || "Q"
       quit
     else
-      invalid                                                                               # => "Your argument is invalid. Try again."
-    end                                                                                     # => "Your argument is invalid. Try again."
+      invalid
+    end
   end
 
   def play
@@ -35,12 +35,9 @@ end
   end
 
   def invalid
-    "Your argument is invalid. Try again."  # => "Your argument is invalid. Try again."
+    "Your argument is invalid. Try again."
   end
 end
 
-game = GamePrompts.new  # => #<GamePrompts:0x007fe273a2ad98>
-game.welcome("I")       # => "Your argument is invalid. Try again."
-
-# >> Welcome to MASTERMIND
-# >> Would you like to (p)lay, read the (i)nstructions, or (q)uit?
+game = GamePrompts.new
+game.welcome("I")
