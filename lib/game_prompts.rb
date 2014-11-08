@@ -47,7 +47,7 @@ class GamePrompts
   end
 
   def play_again
-  
+
   end
 
 end

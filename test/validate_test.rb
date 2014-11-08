@@ -16,4 +16,6 @@ class ValidateTest < Minitest::Test
   def test_that_it_says_how_many_colors_are_in_the_right_position
     assert_equal 2, player.guess('rrgb')
   end
+
+
 end
