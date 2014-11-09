@@ -28,8 +28,7 @@ class Validate
     when user_guess == secret_answer
       "You win!"
     else
-      puts position_check
-      puts number_correct
+      puts after_guess
     end
   end
 end
