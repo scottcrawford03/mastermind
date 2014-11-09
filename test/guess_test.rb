@@ -12,7 +12,9 @@ class GuessTest < Minitest::Test
 
   def test_that_user_can_only_input_4_colors
     guess = Guess.new
-    assert_equal "You may only guess 4 colors.", guess.user_guess("rgbyy")
+    refute guess.valid_size?(['g', 'g', 'g', 'g', 'g'])
+    refute guess.valid_size?(['g', 'g'])
+    assert guess.valid_size?(['g', 'g', 'g', 'g'])
   end
 
   def test_that_after_guess_array_is_empty_again
@@ -34,5 +36,10 @@ class GuessTest < Minitest::Test
     new_guess.user_guess("rrrr")
     new_guess.user_guess("rrrr")
     assert_equal "You have taken 3 guesses.", new_guess.guess_count
+  end
+
+  def test_it_only_accepts_valid_letters
+    new_guess = Guess.new
+    refute new_guess.valid_letters?(['r', 'x', 'b', 'y'])
   end
 end

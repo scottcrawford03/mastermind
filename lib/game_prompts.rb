@@ -16,15 +16,15 @@ class GamePrompts
     welcome_options
   end
 
-  def welcome_options
-    letter = gets
-    case
-    when "p" || "P"
-      puts play
-    when "i" || "I"
-      puts instructions
-    when "q" || "Q"
-      puts quit
+  def welcome_options(letter)
+    letter = letter.downcase
+    case letter
+    when "p"
+      play
+    when "i"
+      instructions
+    when "q"
+      quit
     else
       invalid
     end
@@ -44,13 +44,17 @@ class GamePrompts
 
   def invalid
     "Your argument is invalid. Try again."
+    welcome
   end
 
   def play_again
+    # if they win the game or they run out of turns
+    # it will bring up this prompt
+    "Would you like to (p)lay again or (q)uit?"
 
   end
 
 end
 
-player = GamePrompts.new
-player.welcome
+# player = GamePrompts.new
+# player.welcome
