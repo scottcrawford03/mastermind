@@ -2,10 +2,11 @@
 # determine how many positions correct
 # verify user guess with answer array
 # track number of guesses - guess 1, guess 2, etc. && "you have X number of guess left"
-require_relative '../lib/guess'
-require_relative '../lib/colors'
+require_relative '../lib/guess'   # => true
+require_relative '../lib/colors'  # => true
 
 class Validate
+
 
   def position_check
     user_guess.zip(secret_answer).map { |user, answer| user == answer }
@@ -24,8 +25,10 @@ class Validate
 
 
   def correct?
+    require 'pry'
+    binding.pry
     case
-    when user_guess == secret_answer
+    when guess == secret_answer
       "You win!"
     else
       puts after_guess

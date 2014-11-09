@@ -3,20 +3,18 @@ class Guess
   attr_accessor :guess_count
                 :previous_guess
 
-  def initialize
-    @guess = []
+  def initialize(guess)
+    @guess = guess.split('')
     @guess_count = 0
     @previous_guess = []
   end
 
-  def user_guess(word)
-    guess = []
-    letters = word.split(//)
-    if !valid_letters?(letters) || !valid_size?(letters)
+  def user_guess
+    if !valid_letters? || !valid_size?
       guess_again
     else
       @guess_count += 1
-      guess << letters && @previous_guess << letters
+      @previous_guess << guess
     end
   end
 
@@ -24,13 +22,13 @@ class Guess
     "The guess must only be 4 colors and either r, g, b, or y."
   end
 
-  def valid_size?(letters)
-    letters.size == 4
+  def valid_size?
+    guess.size == 4
   end
 
-  def valid_letters?(letters)
+  def valid_letters?
     valid_letters = ['r', 'g', 'b', 'y']
-    letters.all? { |letter| valid_letters.include?(letter) }
+    guess.all? { |letter| valid_letters.include?(letter) }
   end
 
   def guess_count
