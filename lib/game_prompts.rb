@@ -5,29 +5,10 @@
 
 class GamePrompts
   attr_reader :intro_message                                                                                 # => nil
-  def initialize
-    @intro_message = "Welcome to MASTERMIND\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?"
 
-
-  end
-
-  def welcome
-    puts intro_message
-    welcome_options
-  end
-
-  def welcome_options(letter)
-    letter = letter.downcase
-    case letter
-    when "p"
-      play
-    when "i"
-      instructions
-    when "q"
-      quit
-    else
-      invalid
-    end
+  def intro_message
+    "Welcome to MASTERMIND\n" +
+    "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
   def play
@@ -44,7 +25,7 @@ class GamePrompts
 
   def invalid
     "Your argument is invalid. Try again."
-    welcome
+    # welcome
   end
 
   def play_again

@@ -1,10 +1,10 @@
 class Guess
-  attr_reader   :guess
+  attr_reader   :player_guess
   attr_accessor :guess_count
                 :previous_guess
 
   def initialize(guess)
-    @guess = guess.split('')
+    @player_guess = guess.split('')
     @guess_count = 0
     @previous_guess = []
   end
@@ -23,16 +23,16 @@ class Guess
   end
 
   def valid_size?
-    guess.size == 4
+    player_guess.size == 4
   end
 
   def valid_letters?
     valid_letters = ['r', 'g', 'b', 'y']
-    guess.all? { |letter| valid_letters.include?(letter) }
+    player_guess.all? { |letter| valid_letters.include?(letter) }
   end
 
   def guess_count
-    if @guess_count < 2
+    if @player_guess_count < 2
       "You have taken #{@guess_count} guess"
     else
       "You have taken #{@guess_count} guesses."

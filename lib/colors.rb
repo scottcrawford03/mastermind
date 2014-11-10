@@ -1,10 +1,11 @@
 class Colors
   attr_reader :answer
   def initialize
-    @answer = []
+    @answer = ['r','r','r','r']
   end
 
   def secret_answer
+    @answer = []
     4.times do
       answer << shuffle.pop
     end
@@ -22,4 +23,3 @@ class Colors
 end
 
 color = Colors.new
-color.secret_answer
