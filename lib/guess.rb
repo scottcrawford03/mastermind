@@ -14,7 +14,7 @@ class Guess
       guess_again
     else
       @guess_count += 1
-      @previous_guess << guess
+      @previous_guess << @player_guess
     end
   end
 
@@ -32,7 +32,7 @@ class Guess
   end
 
   def guess_count
-    if @player_guess_count < 2
+    if @guess_count < 2
       "You have taken #{@guess_count} guess"
     else
       "You have taken #{@guess_count} guesses."

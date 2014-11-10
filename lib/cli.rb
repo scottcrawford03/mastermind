@@ -1,49 +1,63 @@
+require_relative '../lib/game_prompts'  # => true
 class CLI
+  attr_reader :input,                   # => :input
+              :output,                  # => :output
+              :messages,                # => :messages
+              :command                  # => nil
+
   def initialize(input, output)
-    @input = input
-    @output = output
-    @messages = GamePrompts.new
-    @command = ""
+    @input = input               # => #<IO:<STDIN>>
+    @output = output             # => #<IO:<STDOUT>>
+    @messages = GamePrompts.new  # => #<GamePrompts:0x007ffda208d9f8>
+    @command = ""                # => ""
 
   end
 
   def call
-      output.puts @messages.intro_message
+        output.puts @messages.intro_message
       until quit?
+        output.puts @messages.player_input                            # => false
+        @command = input.gets.strip.downcase  # ~> NoMethodError: undefined method `strip' for nil:NilClass
         welcome_options
-        @command = input.gets.strip.downcase
+      end
+
   end
 end
 
-private
-  attr_reader :input,
-              :output,
-              :messages,
-              :command
+private  # => Object
+
 
   def welcome_options
     case
       when play?
-        game = Game.new
-        game.play
+        output.puts "play"
       when instructions?
-        @player.instructions
+        output.puts @messages.instructions
       when quit?
-        @player.quit
+        output.puts @messages.quit
       else
-        @player.invalid
+        output.puts @messages.invalid
       end
     end
-  end
 
   def play?
-    command == "p"
+    command == "p" || command == "play"
   end
 
   def instructions?
-    command == "i"
+    command == "i" || command == "instructions"
   end
 
   def quit?
-    command == "q" || "quit"
+    command == "q" || command == "quit"  # => false
   end
+
+
+game = CLI.new($stdin, $stdout)  # => #<CLI:0x007ffda208dc00 @input=#<IO:<STDIN>>, @output=#<IO:<STDOUT>>, @messages=#<GamePrompts:0x007ffda208d9f8>, @command="">
+game.call
+
+# ~> NoMethodError
+# ~> undefined method `strip' for nil:NilClass
+# ~>
+# ~> /Users/scottcrawford/Turing/mastermind/lib/cli.rb:18:in `call'
+# ~> /Users/scottcrawford/Turing/mastermind/lib/cli.rb:56:in `<main>'

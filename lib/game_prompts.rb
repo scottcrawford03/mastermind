@@ -15,6 +15,10 @@ class GamePrompts
     "begin the game."
   end
 
+  def player_input
+    "Enter Choice: "
+  end
+
   def instructions
     "A secret combination of colors has been chosen at random.\n\nYour job is to guess the correct sequence in 10 tries or less.\n\nIf you manage to win, you'll join the elite as a mastermind.\n\nIf you lose, the shambolic state of your life will be confirmed.\n\nGood luck!...you'll need it."
   end
