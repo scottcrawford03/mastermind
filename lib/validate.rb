@@ -9,24 +9,22 @@ class Validate
 
 
   def position_check
-    user_guess.zip(secret_answer).map { |user, answer| user == answer }
-
+    difference = 0
+    4.times do |index|
+        difference += 1 if guess[index] == secret_answer[index]
+      end
+    difference
   end
 
   def number_correct
-  compared_guess =  user_guess - secret_answer
+  compared_guess =  guess - secret_answer
   correct = 4 - compared_guess.size
   correct
   end
 
-  def after_guess
-    "You have #{number_correct} correct colors and #{position_check} in the right position."
-  end
 
 
   def correct?
-    require 'pry'
-    binding.pry
     case
     when guess == secret_answer
       "You win!"

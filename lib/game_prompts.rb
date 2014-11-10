@@ -54,6 +54,11 @@ class GamePrompts
 
   end
 
+
+  def after_guess
+    "You have #{number_correct} correct colors and #{position_check} in the right position."
+  end
+
 end
 
 # player = GamePrompts.new
