@@ -17,8 +17,8 @@ class GamePrompts
     "Nice try you dummy." + play_again
   end
 
-  def winner(minutes, seconds)
-    "WINNER! Your total time was #{minutes} minutes and #{seconds} seconds. (p)lay again or (q)uit?"
+  def winner(answer, guess_count, minutes, seconds)
+    "WINNER! You guessed the sequence '#{answer.join('').upcase}' with #{guess_count} guesses in #{minutes} minutes and #{seconds} seconds. (p)lay again or (q)uit?"
   end
 
 
@@ -38,16 +38,12 @@ class GamePrompts
     "begin the game."
   end
 
-  def quit_confirm
-    "Are you sure you want to (q)uit"
-  end
-
   def player_input
     "Enter Choice: "
   end
 
   def instructions
-    "A secret combination of colors has been chosen at random.\n\nYour job is to guess the correct sequence in 10 tries or less.\n\nIf you manage to win, you'll join the elite as a mastermind.\n\nIf you lose, the shambolic state of your life will be confirmed.\n\nGood luck!...you'll need it.\n"
+    "A secret combination of colors has been chosen at random.\n\nYour job is to guess the correct sequence in 10 tries or less.\n\nIf you manage to win, you'll join the elite as a mastermind.\n\nIf you lose, the shambolic state of your life will be confirmed.\n\nGood luck!...you'll need it."
   end
 
   def quit
@@ -69,7 +65,7 @@ class GamePrompts
 
   def guess_count(guess_count)
     if guess_count == 1
-      "You have taken #{guess_count} guess"
+      "You have taken #{guess_count} guess."
     else
       "You have taken #{guess_count} guesses."
     end

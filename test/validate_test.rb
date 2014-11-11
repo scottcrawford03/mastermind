@@ -11,8 +11,8 @@ class ValidateTest < Minitest::Test
 
     guess2 = "rrrr"                       # => "rrrr"
     really_guess2 = guess2.chars          # => ["r", "r", "r", "r"]
-    judge = Validate.new(right_answer1)   # => #<Validate:0x007fa4750833d0 @answer=["r", "r", "r", "r"]>
-    judge2 = Validate.new(right_answer1)  # => #<Validate:0x007fa475082db8 @answer=["r", "r", "r", "r"]>
+    judge = Validate.new(right_answer1)   # => #<Validate:0x007fa50c1820c8 @answer=["r", "r", "r", "r"]>
+    judge2 = Validate.new(right_answer1)  # => #<Validate:0x007fa50c181ec0 @answer=["r", "r", "r", "r"]>
 
     assert judge.correct?(guess1)          # => true
     assert judge2.correct?(really_guess2)  # => true
@@ -28,9 +28,9 @@ class ValidateTest < Minitest::Test
     right_answer3  = ['r','g','y','r']  # => ["r", "g", "y", "r"]
     new_guess3     = ['b','b','b','b']  # => ["b", "b", "b", "b"]
 
-    judge1 = Validate.new(right_answer1)               # => #<Validate:0x007fa475081198 @answer=["r", "g", "r", "r"]>
-    judge2 = Validate.new(right_answer2)               # => #<Validate:0x007fa475080f18 @answer=["r", "b", "y", "g"]>
-    judge3 = Validate.new(right_answer3)               # => #<Validate:0x007fa475080c98 @answer=["r", "g", "y", "r"]>
+    judge1 = Validate.new(right_answer1)               # => #<Validate:0x007fa50b12e1b8 @answer=["r", "g", "r", "r"]>
+    judge2 = Validate.new(right_answer2)               # => #<Validate:0x007fa50b12dec0 @answer=["r", "b", "y", "g"]>
+    judge3 = Validate.new(right_answer3)               # => #<Validate:0x007fa50b12dbf0 @answer=["r", "g", "y", "r"]>
     assert_equal 3, judge1.number_correct(new_guess1)
     assert_equal 4, judge2.number_correct(new_guess2)
     assert_equal 0, judge3.number_correct(new_guess3)
@@ -46,24 +46,24 @@ class ValidateTest < Minitest::Test
     right_answer3   = ['r','r','r','r']  # => ["r", "r", "r", "r"]
     new_guess3      = ['r','r','g','b']  # => ["r", "r", "g", "b"]
 
-    judge = Validate.new(right_answer1)               # => #<Validate:0x007fa4750887b8 @answer=["r", "r", "r", "r"]>
+    judge = Validate.new(right_answer1)               # => #<Validate:0x007fa50c180340 @answer=["r", "r", "r", "r"]>
     assert_equal 2, judge.position_check(new_guess1)  # => true
   end
 
 
 end
 
-# >> Run options: --seed 63181
+# >> Run options: --seed 41574
 # >>
 # >> # Running:
 # >>
 # >> [38;5;154m.[0m[38;5;154m.[0m[41m[37mF[0m
 # >>
-# >> [38;5;154mF[0m[38;5;154ma[0m[38;5;148mb[0m[38;5;184mu[0m[38;5;184ml[0m[38;5;214mo[0m[38;5;214mu[0m[38;5;208ms[0m[38;5;208m [0m[38;5;203mr[0m[38;5;203mu[0m[38;5;198mn[0m in 0.001311s, 2288.3295 runs/s, 3051.1060 assertions/s.
+# >> [38;5;154mF[0m[38;5;154ma[0m[38;5;148mb[0m[38;5;184mu[0m[38;5;184ml[0m[38;5;214mo[0m[38;5;214mu[0m[38;5;208ms[0m[38;5;208m [0m[38;5;203mr[0m[38;5;203mu[0m[38;5;198mn[0m in 0.001416s, 2118.6441 runs/s, 2824.8588 assertions/s.
 # >>
 # >>   1) Failure:
 # >> ValidateTest#test_that_it_says_how_many_colors_are_right [/Users/scottcrawford/Turing/mastermind/test/validate_test.rb:34]:
 # >> Expected: 3
-# >>   Actual: 4
+# >>   Actual: 2
 # >>
 # >> 3 runs, 4 assertions, 1 failures, 0 errors, 0 skips

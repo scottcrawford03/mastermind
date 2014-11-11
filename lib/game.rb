@@ -1,16 +1,16 @@
-require_relative '../lib/colors'        # => true
-require_relative '../lib/game_prompts'  # => true
-require_relative "validate"             # => true
+require_relative '../lib/colors'
+require_relative '../lib/game_prompts'
+require_relative "validate"
 
 
 
 class Game
-  attr_reader :input,     # => :input
-              :output,    # => :output
-              :messages,  # => :messages
-              :answer,    # => :answer
-              :judge,     # => :judge
-              :command    # => nil
+  attr_reader :input,
+              :output,
+              :messages,
+              :answer,
+              :judge,
+              :command
 
   def initialize(input, output, messages)
     @input       = input
@@ -33,24 +33,28 @@ class Game
   end
 
 
-private  # => Game
+private
 
   def turn_evaluation
     case
     when quit?
       abort(messages.quit)
     when win?
-      output.puts messages.winner(minutes, seconds)
+      output.puts messages.winner(@answer, guess_counter, minutes, seconds)
     when !valid_size? || !valid_letters?
       output.puts messages.guess_again
     # when lose?
     #   output.puts messages.lose
     #   output.puts messages.play_again
     else validator
-      @guess_count += 1
-      output.puts messages.guess_count(@guess_count)
+      guess_counter
+      output.puts messages.guess_count(guess_counter)
       output.puts messages.after_guess(number_correct, position_right)
     end
+  end
+
+  def guess_counter
+    @guess_count += 1
   end
 
   def seconds
