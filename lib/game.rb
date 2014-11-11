@@ -66,7 +66,7 @@ private
   end
 
   def table_update
-    table.update(guess_count, command, number_correct, position_right, answer)
+    table.update(guess_count, command, number_correct, position_right, answer) if valid_size? && valid_letters?
   end
 
   def seconds
