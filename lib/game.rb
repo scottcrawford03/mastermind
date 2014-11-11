@@ -30,8 +30,8 @@ class Game
 
   def play
     output.puts messages.game_start
+    output.puts table.show
     until win? || lose?
-      output.puts table.show
       output.print messages.guess_prompt
       @command = gets.chomp.downcase
       guess_counter
@@ -43,6 +43,7 @@ class Game
 private
 
   def turn_evaluation
+    output.puts messages.mastermind_logo
     table_update
     output.puts table.show
     case
