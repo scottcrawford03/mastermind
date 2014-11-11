@@ -13,6 +13,10 @@ class GamePrompts
     "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
 
+  def lose
+    "Nice try you dummy." + play_again
+  end
+
   def winner(minutes, seconds)
     "WINNER! Your total time was #{minutes} minutes and #{seconds} seconds. (p)lay again or (q)uit?"
   end
@@ -57,7 +61,6 @@ class GamePrompts
 
   def guess_prompt
     "Take your guess: "
-
   end
 
   def guess_again
@@ -76,6 +79,9 @@ class GamePrompts
     "You have #{number_correct} correct colors and #{position_right} in the right position."
   end
 
+  def play_again
+    "(p)lay again or (q)uit?"
+  end
 end
 
 # player = GamePrompts.new

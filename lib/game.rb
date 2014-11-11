@@ -1,17 +1,16 @@
-require_relative '../lib/colors'
-require_relative '../lib/game_prompts'
-require "validate"
-require 'pry'
+require_relative '../lib/colors'        # => true
+require_relative '../lib/game_prompts'  # => true
+require_relative "validate"             # => true
 
 
 
 class Game
-  attr_reader :input,
-              :output,
-              :messages,
-              :answer,
-              :judge,
-              :command
+  attr_reader :input,     # => :input
+              :output,    # => :output
+              :messages,  # => :messages
+              :answer,    # => :answer
+              :judge,     # => :judge
+              :command    # => nil
 
   def initialize(input, output, messages)
     @input       = input
@@ -27,24 +26,26 @@ class Game
   def play
     until win? || quit?
       output.puts messages.guess_prompt
+      output.puts @answer
       @command = gets.chomp.downcase
       turn_evaluation
     end
   end
 
 
-private
+private  # => Game
 
   def turn_evaluation
     case
     when quit?
       abort(messages.quit)
     when win?
-      output.puts messages.winner(seconds, minutes)
+      output.puts messages.winner(minutes, seconds)
     when !valid_size? || !valid_letters?
       output.puts messages.guess_again
-    when lose?
-      # output.puts messages.lose
+    # when lose?
+    #   output.puts messages.lose
+    #   output.puts messages.play_again
     else validator
       @guess_count += 1
       output.puts messages.guess_count(@guess_count)
@@ -70,7 +71,7 @@ private
   end
 
   def win?
-    judge.correct?(@command)
+    judge.correct?(parsed_guess)
   end
 
   def valid_size?
@@ -83,7 +84,7 @@ private
   end
 
   def lose?
-    @guess_count = 10
+    @guess_count == 1
   end
 
   def quit?
@@ -106,8 +107,5 @@ private
   def position_right
     judge.position_check(parsed_guess)
   end
-
-
-
 
 end

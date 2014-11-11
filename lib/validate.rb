@@ -4,7 +4,7 @@
 # track number of guesses - guess 1, guess 2, etc. && "you have X number of guess left"
 require_relative '../lib/guess'
 require_relative '../lib/colors'
-require "pry"
+
 
 class Validate
   attr_reader :answer,
@@ -23,16 +23,19 @@ class Validate
   end
 
   def number_correct(guess)
-  # answer= rrrr
-  # guess = rrgg
   number_correct = 0
-  guess.each { |letter| number_correct += 1 if answer.include?(letter) }
+  new_answer = @answer
+  new_answer.each_with_index do |letter, index|
+    if guess.include?(letter)
+       new_answer[index] = ''
+       number_correct += 1
+    end
+  end
   number_correct
   end
-
-
 
   def correct?(user_guess)
     user_guess == @answer
   end
+
 end
