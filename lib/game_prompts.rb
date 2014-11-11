@@ -28,17 +28,11 @@ class GamePrompts
 
 
   def mastermind_logo
-    puts
-    " ___ ___   ____  _____ ______    ___  ____   ___ ___  ____  ____   ___
-    |   |   | /    |/ ___/|      |  /  _]|    \ |   |   ||    ||    \ |   \
-    | _   _ ||  o  (   \_ |      | /  [_ |  D  )| _   _ | |  | |  _  ||    \
-    |  \_/  ||     |\__  ||_|  |_||    _]|    / |  \_/  | |  | |  |  ||  D  |
-    |   |   ||  _  |/  \ |  |  |  |   [_ |    \ |   |   | |  | |  |  ||     |
-    |   |   ||  |  |\    |  |  |  |     ||  .  \|   |   | |  | |  |  ||     |
-    |___|___||__|__| \___|  |__|  |_____||__|\_||___|___||____||__|__||_____|
-                                                                             "
+
+
 
   end
+
   def play
     "begin the game."
   end
@@ -76,8 +70,8 @@ class GamePrompts
     end
   end
 
-  def after_guess(number_correct, position_right)
-    "You have #{number_correct} correct colors and #{position_right} in the right position."
+  def after_guess(guess,number_correct, position_right)
+    "Your guess '#{guess.upcase}' has #{number_correct} correct colors with #{position_right} in the correct position."
   end
 
   def play_again

@@ -10,7 +10,8 @@ class Game
               :messages,
               :answer,
               :judge,
-              :command
+              :command,
+              :guess_count
 
   def initialize(input, output, messages)
     @input       = input
@@ -25,7 +26,7 @@ class Game
 
   def play
     output.puts messages.game_start
-    until win? || quit?
+    until win?
       output.print messages.guess_prompt
       output.puts @answer
       @command = gets.chomp.downcase
@@ -46,10 +47,9 @@ private
       output.puts messages.guess_again
     # when lose?
     #   output.puts messages.lose
-    #   output.puts messages.play_again
     else validator
+      output.puts messages.after_guess(@command, number_correct, position_right)
       output.puts messages.guess_count(guess_counter)
-      output.puts messages.after_guess(number_correct, position_right)
     end
   end
 
@@ -88,7 +88,7 @@ private
   end
 
   # def lose?
-  #   @guess_count == 15
+  #   @guess_count >= 1
   # end
 
   def quit?

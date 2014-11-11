@@ -15,6 +15,7 @@ class CLI
   end
 
   def call
+      output.puts @messages.mastermind_logo
       output.puts @messages.intro_message
     until quit?
       output.puts @messages.player_input
