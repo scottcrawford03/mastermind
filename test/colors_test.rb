@@ -5,10 +5,6 @@ require_relative '../lib/colors'
 
 class ColorsTest < Minitest::Test
 
-  def test_that_it_makes_answer_array
-    colors = Colors.new
-    assert_equal [], colors.answer
-  end
 
   def test_that_it_has_4_color_options
     colors = Colors.new

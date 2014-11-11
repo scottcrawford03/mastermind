@@ -1,36 +1,37 @@
-require_relative '../lib/game_prompts'  # => true
+require "game_prompts"
+require "game"
+
 class CLI
-  attr_reader :input,                   # => :input
-              :output,                  # => :output
-              :messages,                # => :messages
-              :command                  # => nil
+  attr_reader :input,
+              :output,
+              :messages,
+              :command
 
   def initialize(input, output)
-    @input = input               # => #<IO:<STDIN>>
-    @output = output             # => #<IO:<STDOUT>>
-    @messages = GamePrompts.new  # => #<GamePrompts:0x007ffda208d9f8>
-    @command = ""                # => ""
-
+    @input = input
+    @output = output
+    @messages = GamePrompts.new
+    @command = ""
   end
 
   def call
-        output.puts @messages.intro_message
-      until quit?
-        output.puts @messages.player_input                            # => false
-        @command = input.gets.strip.downcase  # ~> NoMethodError: undefined method `strip' for nil:NilClass
-        welcome_options
-      end
-
+      output.puts @messages.intro_message
+    until quit?
+      output.puts @messages.player_input
+      @command = input.gets.strip.downcase
+      welcome_options
+    end
   end
 end
 
-private  # => Object
+private
 
 
   def welcome_options
     case
       when play?
-        output.puts "play"
+        game = Game.new(input, output, messages)
+        game.play
       when instructions?
         output.puts @messages.instructions
       when quit?
@@ -49,15 +50,5 @@ private  # => Object
   end
 
   def quit?
-    command == "q" || command == "quit"  # => false
+    command == "q" || command == "quit"
   end
-
-
-game = CLI.new($stdin, $stdout)  # => #<CLI:0x007ffda208dc00 @input=#<IO:<STDIN>>, @output=#<IO:<STDOUT>>, @messages=#<GamePrompts:0x007ffda208d9f8>, @command="">
-game.call
-
-# ~> NoMethodError
-# ~> undefined method `strip' for nil:NilClass
-# ~>
-# ~> /Users/scottcrawford/Turing/mastermind/lib/cli.rb:18:in `call'
-# ~> /Users/scottcrawford/Turing/mastermind/lib/cli.rb:56:in `<main>'
