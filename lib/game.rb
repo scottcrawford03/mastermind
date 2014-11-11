@@ -24,8 +24,9 @@ class Game
   end
 
   def play
+    output.puts messages.game_start
     until win? || quit?
-      output.puts messages.guess_prompt
+      output.print messages.guess_prompt
       output.puts @answer
       @command = gets.chomp.downcase
       turn_evaluation
@@ -47,7 +48,6 @@ private
     #   output.puts messages.lose
     #   output.puts messages.play_again
     else validator
-      guess_counter
       output.puts messages.guess_count(guess_counter)
       output.puts messages.after_guess(number_correct, position_right)
     end
@@ -87,9 +87,9 @@ private
     command.chars.all? { |letter| valid_letters.include?(letter) }
   end
 
-  def lose?
-    @guess_count == 1
-  end
+  # def lose?
+  #   @guess_count == 15
+  # end
 
   def quit?
     command == "q" || command == "quit"

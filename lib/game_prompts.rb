@@ -18,8 +18,13 @@ class GamePrompts
   end
 
   def winner(answer, guess_count, minutes, seconds)
-    "WINNER! You guessed the sequence '#{answer.join('').upcase}' with #{guess_count} guesses in #{minutes} minutes and #{seconds} seconds. (p)lay again or (q)uit?"
+    "WINNER! You guessed the sequence '#{answer.join('').upcase}' with #{guess_count} guesses in #{minutes} minutes and #{seconds} seconds.\n(p)lay again or (q)uit?"
   end
+
+  def game_start
+    "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
+  end
+
 
 
   def mastermind_logo

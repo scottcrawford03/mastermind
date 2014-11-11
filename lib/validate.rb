@@ -7,27 +7,27 @@ require_relative '../lib/colors'
 
 
 class Validate
-  attr_reader :answer_check,
+  attr_reader :answer,
               :guess
 
   def initialize(answer)
-    @answer_check = answer
+    @answer = answer
   end
 
   def position_check(guess)
     difference = 0
     4.times do |index|
-        difference += 1 if guess[index] == @answer_check[index]
+        difference += 1 if guess[index] == @answer[index]
       end
     difference
   end
 
   def number_correct(guess)
   number_correct = 0
-  new_answer = @answer_check
-  guess.each do |letter|
-    if new_answer.include?(letter)
-      new_answer.delete_at(new_answer.index(letter))
+  new_answer = @answer
+  new_answer.each do |letter|
+    if guess.include?(letter)
+      guess.delete_at(guess.index(letter))
        number_correct += 1
     end
   end
