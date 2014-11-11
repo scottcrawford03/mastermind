@@ -1,14 +1,8 @@
-# welcome the user
-# p for play, i for instructions, q for quit
-# q for quit at any time
-# ask if they want to play again - y for yes, n for no
-
 class GamePrompts
   attr_reader :intro_message                                                                                 # => nil
 
   def intro_message
-
-    # %x( say "Welcome to MASTERMIND\n")
+    %x( say "so check me out")
     "Welcome to MASTERMIND\n"+
     "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
   end
@@ -25,11 +19,16 @@ class GamePrompts
     "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
   end
 
-
-
   def mastermind_logo
-
-
+  puts
+%q{
+                      _                      _           _
+                     | |                    (_)         | |
+  _ __ ___   __ _ ___| |_ ___ _ __ _ __ ___  _ _ __   __| |
+ | '_ ` _ \ / _` / __| __/ _ \ '__| '_ ` _ \| | '_ \ / _` |
+ | | | | | | (_| \__ \ ||  __/ |  | | | | | | | | | | (_| |
+ |_| |_| |_|\__,_|___/\__\___|_|  |_| |_| |_|_|_| |_|\__,_|
+ }
 
   end
 
@@ -42,7 +41,7 @@ class GamePrompts
   end
 
   def instructions
-    "A secret combination of colors has been chosen at random.\n\nYour job is to guess the correct sequence in 10 tries or less.\n\nIf you manage to win, you'll join the elite as a mastermind.\n\nIf you lose, the shambolic state of your life will be confirmed.\n\nGood luck!...you'll need it."
+    "A secret combination of colors has been chosen at random.\n\nYour job is to guess the correct sequence in 10 tries or less.\n\nIf you manage to win, you'll join the elite as a mastermind.\n\nIf you lose, the shambolic state of your life will be confirmed.\n\nGood luck!...you'll need it.\n\nPress (p) to play."
   end
 
   def quit
@@ -51,7 +50,6 @@ class GamePrompts
 
   def invalid
     "Your argument is invalid. Try again."
-    # welcome
   end
 
   def guess_prompt
@@ -78,6 +76,3 @@ class GamePrompts
     "(p)lay again or (q)uit?"
   end
 end
-
-# player = GamePrompts.new
-# player.welcome

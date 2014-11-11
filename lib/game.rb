@@ -1,6 +1,7 @@
 require_relative '../lib/colors'
 require_relative '../lib/game_prompts'
 require_relative "validate"
+require 'table'
 
 
 
@@ -11,25 +12,29 @@ class Game
               :answer,
               :judge,
               :command,
-              :guess_count
+              :guess_count,
+              :table
 
   def initialize(input, output, messages)
+    @answer      = Colors.new.secret_answer
+    @judge       = Validate.new(@answer)
+    @start_time  = Time.now
+    @table       = Table.new
     @input       = input
     @output      = output
     @messages    = messages
-    @answer      = Colors.new.secret_answer
-    @judge       = Validate.new(@answer)
     @command     = ""
     @guess_count = 0
-    @start_time  = Time.now
+    @old_guess   = []
   end
 
   def play
     output.puts messages.game_start
-    until win?
+    until win? || lose?
+      output.puts table.show
       output.print messages.guess_prompt
-      output.puts @answer
       @command = gets.chomp.downcase
+      guess_counter
       turn_evaluation
     end
   end
@@ -38,23 +43,29 @@ class Game
 private
 
   def turn_evaluation
+    table_update
+    output.puts table.show
     case
     when quit?
       abort(messages.quit)
     when win?
-      output.puts messages.winner(@answer, guess_counter, minutes, seconds)
+      output.puts messages.winner(answer, guess_count, minutes, seconds)
     when !valid_size? || !valid_letters?
       output.puts messages.guess_again
-    # when lose?
-    #   output.puts messages.lose
+    when lose?
+      output.puts messages.lose
     else validator
-      output.puts messages.after_guess(@command, number_correct, position_right)
-      output.puts messages.guess_count(guess_counter)
+      output.puts messages.after_guess(command, number_correct, position_right)
+      output.puts messages.guess_count(guess_count)
     end
   end
 
   def guess_counter
     @guess_count += 1
+  end
+
+  def table_update
+    table.update(guess_count, command, number_correct, position_right, answer)
   end
 
   def seconds
@@ -87,9 +98,9 @@ private
     command.chars.all? { |letter| valid_letters.include?(letter) }
   end
 
-  # def lose?
-  #   @guess_count >= 1
-  # end
+  def lose?
+    @guess_count >= 10
+  end
 
   def quit?
     command == "q" || command == "quit"
@@ -110,6 +121,10 @@ private
 
   def position_right
     judge.position_check(parsed_guess)
+  end
+
+  def save_guess
+    @old_guess << @command
   end
 
 end
