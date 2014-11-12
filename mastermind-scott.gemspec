@@ -6,14 +6,14 @@ Gem::Specification.new do |s|
   s.description = "The Mastermind Game"
   s.authors     = ["Scott Crawford"]
   s.email       = 'scottcrawford03@gmail.com'
-  s.files       = %w[mastermind-scott.gemspec,
-                   "bin/mastermind.rb"
-                   "lib/cli.rb",
-                   "lib/colors.rb",
-                   "lib/game_prompts.rb",
-                   "lib/table.rb",
-                   "lib/validate.rb",
-                   "lib/game.rb"      ]
+  s.files       = %w[mastermind-scott.gemspec
+                   bin/mastermind.rb
+                   lib/cli.rb
+                   lib/colors.rb
+                   lib/game_prompts.rb
+                   lib/table.rb
+                   lib/validate.rb
+                   lib/game.rb      ]
   s.homepage    = 'http://rubygems.org/gems/mastermind-scott'
   s.license     = 'SMC'
   s.executables << 'mastermind-scott'
