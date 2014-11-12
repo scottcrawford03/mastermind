@@ -2,6 +2,7 @@ gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/game'
+require_relative '../lib/table'
 
 class GameTest < Minitest::Test
 
@@ -25,10 +26,16 @@ class GameTest < Minitest::Test
     assert_equal 2, game.guess_count
   end
 
-  def test_that_minutes_and_seconds_exist
+  def test_that_time_works
     game = Game.new("input","output","message")
-    assert game.send(:seconds)
-    assert game.send(:minutes)
+    game.send(:start_time)
+    sleep(5)
+    game.send(:end_time)
+    game.send(:total_time)
+    assert_equal 5, game.send(:seconds)
+    assert_equal 0, game.send(:minutes)
   end
+
+  
 
 end

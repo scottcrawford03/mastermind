@@ -1,7 +1,7 @@
 require_relative '../lib/colors'
 require_relative '../lib/game_prompts'
 require_relative "validate"
-require 'table'
+require_relative '../lib/table'
 
 
 
@@ -13,7 +13,8 @@ class Game
               :judge,
               :command,
               :guess_count,
-              :table
+              :table,
+              :start_time
 
   def initialize(input, output, messages)
     @answer      = Colors.new.secret_answer
