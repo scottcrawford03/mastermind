@@ -53,6 +53,7 @@ private
       output.puts messages.winner(answer, guess_count, minutes, seconds)
     when !valid_size? || !valid_letters?
       output.puts messages.guess_again
+      @guess_count -= 1
     when lose?
       output.puts messages.lose
     else validator

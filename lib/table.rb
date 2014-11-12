@@ -38,10 +38,4 @@ class Table
     Terminal::Table.new :headings => ['Round', 'G', 'C', 'P'],
                         :rows => rows
   end
-
 end
-
-# table = Table.new
-# table.show
-# table.new_row(1,2,3)
-# table.show
