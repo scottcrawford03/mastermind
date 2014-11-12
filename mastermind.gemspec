@@ -18,12 +18,3 @@ Gem::Specification.new do |s|
   s.license     = 'SMC'
   s.executables << 'mastermind-scott'
 end
-
-%w[mastermind-dglunz.gemspec
-                       README.md
-                       bin/mastermind
-                       lib/mastermind-dglunz/board.rb
-                       lib/mastermind-dglunz/cli.rb
-                       lib/mastermind-dglunz/color_sequence.rb
-                       lib/mastermind-dglunz/display.rb
-                       lib/mastermind-dglunz/game.rb]
