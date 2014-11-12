@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Scott Crawford"]
   s.email       = 'scottcrawford03@gmail.com'
   s.files       = %w[mastermind-scott.gemspec
-                   bin/mastermind.rb
+                   mastermind.rb
                    lib/cli.rb
                    lib/colors.rb
                    lib/game_prompts.rb

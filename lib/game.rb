@@ -1,6 +1,6 @@
 require_relative '../lib/colors'
 require_relative '../lib/game_prompts'
-require_relative "validate"
+require_relative "../lib/validate"
 require_relative '../lib/table'
 
 
