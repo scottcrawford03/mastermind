@@ -34,7 +34,7 @@ class Game
     output.puts table.show
     until win? || lose?
       output.print messages.guess_prompt
-      @command = gets.chomp.downcase
+      @command = input.gets.chomp.downcase
       guess_counter
       turn_evaluation
     end
@@ -93,12 +93,12 @@ private
   end
 
   def valid_size?
-    command.length == 4
+    judge.size?(command)
+    # command.length == 4
   end
 
   def valid_letters?
-    valid_letters = ['r', 'g', 'b', 'y']
-    command.chars.all? { |letter| valid_letters.include?(letter) }
+    judge.letters?(command)
   end
 
   def lose?

@@ -36,6 +36,4 @@ class GameTest < Minitest::Test
     assert_equal 0, game.send(:minutes)
   end
 
-  
-
 end

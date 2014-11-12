@@ -38,4 +38,12 @@ class Validate
     user_guess == @answer
   end
 
+  def letters?(guess)
+    valid_letters = ['r', 'g', 'b', 'y']
+    guess.chars.all? { |letter| valid_letters.include?(letter) }
+  end
+
+  def size?(guess)
+    guess.length == 4
+  end
 end
