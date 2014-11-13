@@ -4,12 +4,11 @@ require 'minitest/pride'
 require_relative '../lib/validate'
 
 class ValidateTest < Minitest::Test
-
   def test_that_it_checks_guess_against_answer
-    right_answer1 = ['r','r','r','r']
-    guess1        = ['r','r','r','r']
+    right_answer1 = %w(r r r r)
+    guess1        = %w(r r r r)
 
-    guess2 = "rrrr"
+    guess2 = 'rrrr'
     really_guess2 = guess2.chars
     judge = Validate.new(right_answer1)
     judge2 = Validate.new(right_answer1)
@@ -19,14 +18,14 @@ class ValidateTest < Minitest::Test
   end
 
   def test_that_it_says_how_many_colors_are_right
-    right_answer1  = ['r','g','r','r']
-    new_guess1     = ['r','r','g','b']
+    right_answer1  = %w(r g r r)
+    new_guess1     = %w(r r g b)
 
-    right_answer2  = ['r','b','y','g']
-    new_guess2     = ['g','y','b','r']
+    right_answer2  = %w(r b y g)
+    new_guess2     = %w(g y b r)
 
-    right_answer3  = ['r','g','y','r']
-    new_guess3     = ['b','b','b','b']
+    right_answer3  = %w(r g y r)
+    new_guess3     = %w(b b b b)
 
     judge1 = Validate.new(right_answer1)
     judge2 = Validate.new(right_answer2)
@@ -37,14 +36,14 @@ class ValidateTest < Minitest::Test
   end
 
   def test_that_it_says_how_many_colors_are_in_the_right_position
-    right_answer1   = ['r','r','r','r']
-    new_guess1      = ['r','r','g','b']
+    right_answer1   = %w(r r r r)
+    new_guess1      = %w(r r g b)
 
-    right_answer2   = ['r','r','r','r']
-    new_guess2      = ['r','r','r','b']
+    right_answer2   = %w(r r r r)
+    new_guess2      = %w(r r r b)
 
-    right_answer3   = ['b','r','r','r']
-    new_guess3      = ['r','b','b','b']
+    right_answer3   = %w(b r r r)
+    new_guess3      = %w(r b b b)
 
     judge1 = Validate.new(right_answer1)
     judge2 = Validate.new(right_answer2)
@@ -56,11 +55,11 @@ class ValidateTest < Minitest::Test
   end
 
   def test_that_user_can_only_input_4_colors
-    right_answer1   = ['r','r','r','r']
+    right_answer1   = %w(r r r r)
 
-    guess1          = ['r','r','g']
-    guess2          = ['r','r','g']
-    guess3          = ['r','r','g','b']
+    guess1          = %w(r r g)
+    guess2          = %w(r r g)
+    guess3          = %w(r r g b)
 
     judge1 = Validate.new(right_answer1)
     judge2 = Validate.new(right_answer1)
@@ -72,12 +71,11 @@ class ValidateTest < Minitest::Test
   end
 
   def test_it_only_accepts_valid_letters
-    right_answer1   = ['r','r','r','r']
+    right_answer1   = %w(r r r r)
 
     guess1          = ('rrrq')
     guess2          = ('rrr1')
     guess3          = ('rrrr')
-
 
     judge1 = Validate.new(right_answer1)
     judge2 = Validate.new(right_answer1)
@@ -87,6 +85,4 @@ class ValidateTest < Minitest::Test
     refute judge2.letters?(guess2)
     assert judge3.letters?(guess3)
   end
-
-
 end

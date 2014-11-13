@@ -4,8 +4,6 @@ require 'minitest/pride'
 require_relative '../lib/colors'
 
 class ColorsTest < Minitest::Test
-
-
   def test_that_it_has_4_color_options
     colors = Colors.new
     assert_equal 4, colors.answer_options.count
@@ -14,10 +12,10 @@ class ColorsTest < Minitest::Test
   def test_that_it_can_only_be_r_g_b_y
     colors = Colors.new
 
-    assert_equal "r", colors.answer_options[0]
-    assert_equal "g", colors.answer_options[1]
-    assert_equal "b", colors.answer_options[2]
-    assert_equal "y", colors.answer_options[3]
+    assert_equal 'r', colors.answer_options[0]
+    assert_equal 'g', colors.answer_options[1]
+    assert_equal 'b', colors.answer_options[2]
+    assert_equal 'y', colors.answer_options[3]
 
     alphabet = 'a'.upto('z').to_a
     new_alphabet = alphabet.to_s.gsub(/[rgby]/, '')
@@ -29,7 +27,4 @@ class ColorsTest < Minitest::Test
     colors = Colors.new
     assert colors.respond_to?(:shuffle)
   end
-
-
-
 end
