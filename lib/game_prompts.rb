@@ -18,7 +18,7 @@ class GamePrompts
   end
 
   def game_start
-    "I have generated a beginner sequence with four elements made up of:\n" + "(r)".red + "ed, " + "(g)".green + "reen, " + "(b)".light_blue + "lue, " + "and " +"(y)".yellow + "ellow.\n Use (q)uit at any time to end the game."
+    "I have generated a beginner sequence with four elements made up of:\n" + "(r)".red + "ed, " + "(g)".green + "reen, " + "(b)".light_blue + "lue, " + "and " +"(y)".yellow + "ellow.\n Use (q)uit at any time to end the game.\n\n"
   end
 
   def mastermind_logo
