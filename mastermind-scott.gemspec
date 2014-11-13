@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'mastermind-scott'
-  s.version     = '2.0.3'
+  s.version     = '2.0.4'
   s.date        = '2014-11-12'
   s.summary     = "Try to guess the secret code."
   s.description = "The Mastermind Game"
