@@ -46,14 +46,11 @@ private
   def turn_evaluation
     turn_visuals
     case
-    when quit?
-      abort(messages.quit)
+    when quit? then abort(messages.quit)
     when win? then you_win
     when !valid_size? || !valid_letters? then invalid
     when lose? then you_lose
-    else validator
-      output.puts messages.after_guess(command, number_correct, position_right)
-      output.puts messages.guess_count(guess_count)
+    else turn_validate
     end
   end
 
@@ -67,6 +64,7 @@ private
   end
 
   def turn_validate
+    validator
     output.puts messages.after_guess(command, number_correct, position_right)
     output.puts messages.guess_count(guess_count)
   end
@@ -96,7 +94,6 @@ private
   def minutes
     total_time / 60
   end
-
 
   def total_time
     (end_time - @start_time).to_i
