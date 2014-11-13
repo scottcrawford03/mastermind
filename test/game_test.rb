@@ -29,10 +29,10 @@ class GameTest < Minitest::Test
   def test_that_time_works
     game = Game.new("input","output","message")
     game.send(:start_time)
-    sleep(5)
+    sleep(1)
     game.send(:end_time)
     game.send(:total_time)
-    assert_equal 5, game.send(:seconds)
+    assert_equal 1, game.send(:seconds)
     assert_equal 0, game.send(:minutes)
   end
 

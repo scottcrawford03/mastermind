@@ -14,7 +14,7 @@ class GamePrompts
   end
 
   def winner(answer, guess_count, minutes, seconds)
-    "WINNER! You guessed the sequence '#{answer.join('').upcase}' with #{guess_count} guesses in #{minutes} minutes and #{seconds} seconds.\n(p)lay again or (q)uit?"
+    "WINNER! You guessed the sequence '#{answer.join('').upcase}' with #{guess_count} guesses in #{minutes} minutes and #{seconds} seconds. \n(p)lay again or (q)uit?"
   end
 
   def game_start
