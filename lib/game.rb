@@ -1,9 +1,7 @@
 require_relative '../lib/colors'
 require_relative '../lib/game_prompts'
-require_relative "../lib/validate"
+require_relative '../lib/validate'
 require_relative '../lib/table'
-
-
 
 class Game
   attr_reader :input,
@@ -24,7 +22,7 @@ class Game
     @input       = input
     @output      = output
     @messages    = messages
-    @command     = ""
+    @command     = ''
     @guess_count = 0
     @old_guess   = []
   end
@@ -40,8 +38,7 @@ class Game
     end
   end
 
-
-private
+  private
 
   def turn_evaluation
     turn_visuals
@@ -70,7 +67,7 @@ private
   end
 
   def you_win
-   output.puts messages.winner(answer, guess_count, minutes, seconds)
+    output.puts messages.winner(answer, guess_count, minutes, seconds)
   end
 
   def turn_visuals
@@ -121,7 +118,7 @@ private
   end
 
   def quit?
-    command == "q" || command == "quit"
+    command == 'q' || command == 'quit'
   end
 
   def validator
@@ -144,5 +141,4 @@ private
   def save_guess
     @old_guess << @command
   end
-
 end

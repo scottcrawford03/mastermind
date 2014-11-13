@@ -1,7 +1,7 @@
 class Colors
   attr_reader :answer
   def initialize
-    @answer = ['r','r','r','r']
+    @answer = %w(r r r r)
   end
 
   def secret_answer
@@ -13,11 +13,10 @@ class Colors
   end
 
   def answer_options
-    ["r","g","b","y"]
+    %w(r g b y)
   end
 
   def shuffle
     answer_options.shuffle
   end
-
 end

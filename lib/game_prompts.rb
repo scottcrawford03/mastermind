@@ -4,13 +4,13 @@ class GamePrompts
   attr_reader :intro_message                                                                                 # => nil
 
   def intro_message
-    %x( say "so check me out")
+    ` say "so check me out"`
     "Welcome to MASTERMIND\n".green +
-    "Would you like to (p)lay, read the (i)nstructions, or (q)uit?".light_blue
+      'Would you like to (p)lay, read the (i)nstructions, or (q)uit?'.light_blue
   end
 
   def lose
-    "Nice try you " + "DUMMY. ".blue.bold + play_again
+    'Nice try you ' + 'DUMMY. '.blue.bold + play_again
   end
 
   def winner(answer, guess_count, minutes, seconds)
@@ -18,28 +18,27 @@ class GamePrompts
   end
 
   def game_start
-    "I have generated a beginner sequence with four elements made up of:\n" + "(r)".red + "ed, " + "(g)".green + "reen, " + "(b)".light_blue + "lue, " + "and " +"(y)".yellow + "ellow.\n Use (q)uit at any time to end the game.\n\n"
+    "I have generated a beginner sequence with four elements made up of:\n" + '(r)'.red + 'ed, ' + '(g)'.green + 'reen, ' + '(b)'.light_blue + 'lue, ' + 'and ' + '(y)'.yellow + "ellow.\n Use (q)uit at any time to end the game.\n\n"
   end
 
   def mastermind_logo
-  puts
-%q{
-                      _                      _           _
-                     | |                    (_)         | |
-  _ __ ___   __ _ ___| |_ ___ _ __ _ __ ___  _ _ __   __| |
- | '_ ` _ \ / _` / __| __/ _ \ '__| '_ ` _ \| | '_ \ / _` |
- | | | | | | (_| \__ \ ||  __/ |  | | | | | | | | | | (_| |
- |_| |_| |_|\__,_|___/\__\___|_|  |_| |_| |_|_|_| |_|\__,_|
- }.cyan
-
+    puts
+    %q{
+                          _                      _           _
+                         | |                    (_)         | |
+      _ __ ___   __ _ ___| |_ ___ _ __ _ __ ___  _ _ __   __| |
+     | '_ ` _ \ / _` / __| __/ _ \ '__| '_ ` _ \| | '_ \ / _` |
+     | | | | | | (_| \__ \ ||  __/ |  | | | | | | | | | | (_| |
+     |_| |_| |_|\__,_|___/\__\___|_|  |_| |_| |_|_|_| |_|\__,_|
+     }.cyan
   end
 
   def play
-    "begin the game."
+    'begin the game.'
   end
 
   def player_input
-    "Enter Choice: ".yellow
+    'Enter Choice: '.yellow
   end
 
   def instructions
@@ -47,34 +46,34 @@ class GamePrompts
   end
 
   def quit
-    "Your father was right about you, you are a quitter.".red
+    'Your father was right about you, you are a quitter.'.red
   end
 
   def invalid
-    "Your argument is invalid. Try again.".red
+    'Your argument is invalid. Try again.'.red
   end
 
   def guess_prompt
-    "Take your guess: ".yellow
+    'Take your guess: '.yellow
   end
 
   def guess_again
-    "The guess must only be 4 colors and either" +" r, ".red + "g, ".green + "b, ".light_blue + "or y.".yellow
+    'The guess must only be 4 colors and either' + ' r, '.red + 'g, '.green + 'b, '.light_blue + 'or y.'.yellow
   end
 
   def guess_count(guess_count)
     if guess_count == 1
-      "You have taken" + " #{guess_count}".red + " guess."
+      'You have taken' + " #{guess_count}".red + ' guess.'
     else
-      "You have taken " + " #{guess_count}".red + " guesses."
+      'You have taken ' + " #{guess_count}".red + ' guesses.'
     end
   end
 
-  def after_guess(guess,number_correct, position_right)
-    "Your guess " + "'#{guess.upcase}'".magenta + " has " + "#{number_correct}".magenta + " correct colors with " + "#{position_right}".magenta + " in the correct position."
+  def after_guess(guess, number_correct, position_right)
+    'Your guess ' + "'#{guess.upcase}'".magenta + ' has ' + "#{number_correct}".magenta + ' correct colors with ' + "#{position_right}".magenta + ' in the correct position.'
   end
 
   def play_again
-    "(p)lay again or (q)uit?"
+    '(p)lay again or (q)uit?'
   end
 end
