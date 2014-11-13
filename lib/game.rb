@@ -44,23 +44,41 @@ class Game
 private
 
   def turn_evaluation
-    output.puts messages.mastermind_logo
-    table_update
-    output.puts table.show
+    turn_visuals
     case
     when quit?
       abort(messages.quit)
-    when win?
-      output.puts messages.winner(answer, guess_count, minutes, seconds)
-    when !valid_size? || !valid_letters?
-      output.puts messages.guess_again
-      @guess_count -= 1
-    when lose?
-      output.puts messages.lose
+    when win? then you_win
+    when !valid_size? || !valid_letters? then invalid
+    when lose? then you_lose
     else validator
       output.puts messages.after_guess(command, number_correct, position_right)
       output.puts messages.guess_count(guess_count)
     end
+  end
+
+  def invalid
+    output.puts messages.guess_again
+    @guess_count -= 1
+  end
+
+  def you_lose
+    output.puts messages.lose
+  end
+
+  def turn_validate
+    output.puts messages.after_guess(command, number_correct, position_right)
+    output.puts messages.guess_count(guess_count)
+  end
+
+  def you_win
+   output.puts messages.winner(answer, guess_count, minutes, seconds)
+  end
+
+  def turn_visuals
+    output.puts messages.mastermind_logo
+    table_update
+    output.puts table.show
   end
 
   def guess_counter
