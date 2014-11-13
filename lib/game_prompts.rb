@@ -1,14 +1,16 @@
+require 'colorize'
+
 class GamePrompts
   attr_reader :intro_message                                                                                 # => nil
 
   def intro_message
     %x( say "so check me out")
-    "Welcome to MASTERMIND\n"+
-    "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    "Welcome to MASTERMIND\n".green +
+    "Would you like to (p)lay, read the (i)nstructions, or (q)uit?".light_blue
   end
 
   def lose
-    "Nice try you dummy." + play_again
+    "Nice try you " + "DUMMY. ".blue.bold + play_again
   end
 
   def winner(answer, guess_count, minutes, seconds)
@@ -16,7 +18,7 @@ class GamePrompts
   end
 
   def game_start
-    "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game."
+    "I have generated a beginner sequence with four elements made up of:\n" + "(r)".red + "ed, " + "(g)".green + "reen, " + "(b)".light_blue + "lue, " + "and " +"(y)".yellow + "ellow.\n Use (q)uit at any time to end the game."
   end
 
   def mastermind_logo
@@ -28,7 +30,7 @@ class GamePrompts
  | '_ ` _ \ / _` / __| __/ _ \ '__| '_ ` _ \| | '_ \ / _` |
  | | | | | | (_| \__ \ ||  __/ |  | | | | | | | | | | (_| |
  |_| |_| |_|\__,_|___/\__\___|_|  |_| |_| |_|_|_| |_|\__,_|
- }
+ }.cyan
 
   end
 
@@ -37,7 +39,7 @@ class GamePrompts
   end
 
   def player_input
-    "Enter Choice: "
+    "Enter Choice: ".yellow
   end
 
   def instructions
@@ -45,31 +47,31 @@ class GamePrompts
   end
 
   def quit
-    "Your father was right about you, you are a quitter."
+    "Your father was right about you, you are a quitter.".red
   end
 
   def invalid
-    "Your argument is invalid. Try again."
+    "Your argument is invalid. Try again.".red
   end
 
   def guess_prompt
-    "Take your guess: "
+    "Take your guess: ".yellow
   end
 
   def guess_again
-    "The guess must only be 4 colors and either r, g, b, or y."
+    "The guess must only be 4 colors and either" +" r, ".red + "g, ".green + "b, ".light_blue + "or y.".yellow
   end
 
   def guess_count(guess_count)
     if guess_count == 1
-      "You have taken #{guess_count} guess."
+      "You have taken" + " #{guess_count}".red + " guess."
     else
-      "You have taken #{guess_count} guesses."
+      "You have taken " + " #{guess_count}".red + " guesses."
     end
   end
 
   def after_guess(guess,number_correct, position_right)
-    "Your guess '#{guess.upcase}' has #{number_correct} correct colors with #{position_right} in the correct position."
+    "Your guess " + "'#{guess.upcase}'".magenta + " has " + "#{number_correct}".magenta + " correct colors with " + "#{position_right}".magenta + " in the correct position."
   end
 
   def play_again

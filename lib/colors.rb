@@ -21,5 +21,3 @@ class Colors
   end
 
 end
-
-color = Colors.new

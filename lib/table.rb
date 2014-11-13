@@ -35,7 +35,7 @@ class Table
   end
 
   def create_table
-    Terminal::Table.new :headings => ['Round', 'G', 'C', 'P'],
+    Terminal::Table.new :headings => ['Round', 'Guess', 'Color', 'Pos'],
                         :rows => rows
   end
 end
